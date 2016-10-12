@@ -1,0 +1,39 @@
+<!doctype html>
+
+<h3>Bluemix App!!</h3>
+
+<h2>These files are on the cloud : </h2>
+<ul>
+{% for file in list_of_files %}
+<li>{{ file }}</li>
+{% endfor %}
+</ul>
+
+Total size of files = {{ total_size }} bytes
+
+<hr/>
+<h2>To upload a file : </h2>
+<form method = "POST" action="/upload" enctype="multipart/form-data">
+
+	<input type="file" name="file_to_upload" value="file"/>
+	<input type="submit" value="upload"/>
+</form>
+
+<hr/>
+<h2>To download a file : </h2>
+<form method = "POST" action="/download" enctype="multipart/form-data">
+
+	Enter the name of the file to download : <input type="text" name="file_to_download"/>
+	<input type="submit" value="download"/>
+
+	<br/>
+	{{ print_message }}
+</form>
+
+<hr/>
+<h2>To delete a file : </h2>
+<form method = "POST" action="/delete" enctype="multipart/form-data">
+
+	Enter a time in minutes, and the files uploaded before now - minutes you entered will be deleted : <input type="text" name="time_entered"/>
+	<input type="submit" value="delete"/>
+</form>
